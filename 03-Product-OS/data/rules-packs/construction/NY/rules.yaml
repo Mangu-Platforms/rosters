@@ -1,0 +1,12 @@
+vertical: construction
+state: NY
+status: stub
+last_reviewed_by_counsel: null
+rules: []
+# Structural stub only. New York has its own minimum wage (with NYC/Long
+# Island/Westchester running higher than the rest of the state), its own
+# prevailing-wage regime (NY Labor Law Article 8), and prompt-payment rules
+# construction specifically triggers. Populate this after the NJ construction
+# pack has been validated against a real parallel-run pay cycle, per the
+# Feasibility Study's phased-vertical recommendation — do not claim NY
+# coverage in any customer conversation until this file has real rules in it.

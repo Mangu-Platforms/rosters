@@ -1,0 +1,11 @@
+vertical: home_care
+state: NY
+status: stub
+last_reviewed_by_counsel: null
+rules: []
+# Structural stub only. New York has its own home-care-specific wage history
+# worth real research before this pack is drafted — most notably the "13-hour
+# rule" litigation history for live-in home care aides, which has no NJ
+# equivalent and should not be assumed to work the same way. Populate after
+# the NJ home-care pack has been validated and counsel has weighed in on the
+# companionship/live-in exemption question flagged in home-care/NJ/rules.yaml.

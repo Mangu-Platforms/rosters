@@ -1,0 +1,76 @@
+vertical: home_care
+state: NJ
+status: active
+last_reviewed_by_counsel: null   # set this date once employment-tax/labor counsel has signed off — see README.md
+rules:
+
+  - rule_id: nj-home-care-min-wage-2026
+    category: minimum_wage
+    description: >
+      Every hourly home-care aide's base_rate must be at or above the New
+      Jersey general minimum wage. Same statewide floor as construction —
+      see the construction/NJ pack for the small-employer/seasonal caveat,
+      which applies equally here.
+    statute_ref: "N.J.S.A. 34:11-56a4 (illustrative citation — confirm with counsel)"
+    effective_date: "2026-01-01"
+    parameters:
+      hourly_minimum_usd: 15.49
+    source_confidence: verified_this_session
+    needs_counsel_review: true
+
+  - rule_id: nj-home-care-overtime-and-companionship
+    category: overtime
+    description: >
+      Home care is the one vertical where the "who is the employer" question
+      changes the overtime answer. Under the federal 2015 Home Care Rule,
+      most aides employed by a third-party agency (as opposed to hired
+      directly by the individual or family receiving care) are entitled to
+      minimum wage and overtime — the old federal "companionship services"
+      and live-in exemptions apply narrowly, mainly to direct hire by the
+      care recipient. Since Aether's beachhead ICP is agencies, this rule
+      defaults to standard 40-hour weekly overtime and requires an explicit
+      flag to apply any exemption, rather than defaulting to the exemption.
+    statute_ref: "29 C.F.R. Part 552 (federal); confirm New Jersey's own state-law overtime treatment of home care with counsel"
+    effective_date: "2015-01-01"
+    parameters:
+      weekly_overtime_threshold_hours: 40
+      overtime_multiplier: 1.5
+      companionship_exemption_default: false
+      live_in_exemption_default: false
+    source_confidence: placeholder_needs_research
+    needs_counsel_review: true
+    note: >
+      This is the single highest-value rule in this pack to get an actual
+      legal opinion on before go-live — the source documents correctly flag
+      home care as one of the two beachhead verticals, and this exemption
+      question is exactly the kind of thing generic SMB payroll treats as an
+      edge case and Aether is supposed to get right.
+
+  - rule_id: nj-earned-sick-leave-home-care
+    category: paid_leave
+    description: >
+      Same statewide Earned Sick Leave Law as construction — included here
+      rather than only once because rules packs are per vertical × state by
+      design, so the compliance engine never has to reach across verticals
+      to find a shared rule.
+    statute_ref: "New Jersey Earned Sick Leave Law, N.J.S.A. 34:11D-1 et seq. — confirm citation with counsel"
+    effective_date: "2018-10-29"
+    parameters:
+      accrual_hours_worked_per_credit: 30
+      accrual_credit_hours: 1
+      annual_cap_hours: 40
+    source_confidence: placeholder_needs_research
+    needs_counsel_review: true
+
+  - rule_id: nj-home-care-travel-time
+    category: other
+    description: >
+      Placeholder for travel-time-between-clients pay treatment, a recurring
+      wage-and-hour exposure specific to home care (and one of the "messy
+      time rules" the source Operating Plan names as common across its five
+      verticals). Not yet parameterized.
+    statute_ref: null
+    effective_date: null
+    parameters: {}
+    source_confidence: placeholder_needs_research
+    needs_counsel_review: true

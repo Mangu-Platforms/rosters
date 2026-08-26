@@ -1,0 +1,87 @@
+vertical: construction
+state: NJ
+status: active
+last_reviewed_by_counsel: null   # set this date once employment-tax/labor counsel has signed off — see README.md
+rules:
+
+  - rule_id: nj-construction-min-wage-2026
+    category: minimum_wage
+    description: >
+      Every hourly employee's base_rate must be at or above the New Jersey
+      general minimum wage. Fires as an entity-wide exception the moment an
+      employment_period is loaded or edited, independent of any pay run —
+      this is the rule the synthetic-crew fixture's fifth planted error
+      (Tyler Brooks, $14.75/hr) is built to trigger.
+    statute_ref: "N.J.S.A. 34:11-56a4 (illustrative citation — confirm with counsel)"
+    effective_date: "2026-01-01"
+    parameters:
+      hourly_minimum_usd: 15.49
+    source_confidence: verified_this_session
+    needs_counsel_review: true
+    note: >
+      NJ's minimum-wage statute has historically run separate, slower phase-in
+      schedules for seasonal employers and employers with fewer than 6
+      employees. Confirm whether any beachhead design partner falls under a
+      differential schedule before treating 15.49 as universal.
+
+  - rule_id: nj-construction-overtime
+    category: overtime
+    description: >
+      Non-exempt hourly employees earn 1.5x their regular rate for hours
+      worked beyond 40 in a workweek. New Jersey does not impose a separate
+      daily-overtime threshold on top of the federal weekly one.
+    statute_ref: "N.J.S.A. 34:11-56a4 / 29 U.S.C. §207 (FLSA) — confirm citation with counsel"
+    effective_date: "2026-01-01"
+    parameters:
+      weekly_overtime_threshold_hours: 40
+      overtime_multiplier: 1.5
+      daily_overtime_threshold_hours: null   # NJ has none; keep explicit rather than absent so the engine doesn't infer one
+    source_confidence: placeholder_needs_research
+    needs_counsel_review: true
+
+  - rule_id: nj-earned-sick-leave
+    category: paid_leave
+    description: >
+      Covered employees accrue paid sick leave at a fixed rate per hour
+      worked, up to an annual cap, usable from the start of employment in
+      most cases. Applies to nearly all New Jersey employers regardless of
+      size.
+    statute_ref: "New Jersey Earned Sick Leave Law, N.J.S.A. 34:11D-1 et seq. — confirm citation with counsel"
+    effective_date: "2018-10-29"
+    parameters:
+      accrual_hours_worked_per_credit: 30
+      accrual_credit_hours: 1
+      annual_cap_hours: 40
+    source_confidence: placeholder_needs_research
+    needs_counsel_review: true
+
+  - rule_id: nj-prevailing-wage
+    category: prevailing_wage
+    description: >
+      Public-works construction contracts above a statutory threshold require
+      paying the prevailing wage rate for the applicable craft and county, as
+      published by the NJ Department of Labor and Workforce Development —
+      not a single fixed number. This rule flags any workplace marked
+      is_prevailing_wage_site = true for a per-project wage-determination
+      lookup rather than encoding a rate here.
+    statute_ref: "New Jersey Prevailing Wage Act, N.J.S.A. 34:11-56.25 et seq. — confirm citation with counsel"
+    effective_date: "2026-01-01"
+    parameters:
+      applies_when: "workplace.is_prevailing_wage_site = true"
+      rate_source: "NJDOL wage determination lookup — per craft, per county, per project — not a static parameter"
+    source_confidence: carried_from_source_docs
+    needs_counsel_review: true
+
+  - rule_id: nj-posted-notice
+    category: posted_notice
+    description: >
+      Placeholder for the set of state-mandated workplace postings and
+      written-notice obligations (wage-and-hour abstract, earned sick leave,
+      workers' compensation, etc.). Not yet enumerated rule-by-rule — tracked
+      here as a category so the compliance engine's coverage map is honest
+      about what it does and does not check yet.
+    statute_ref: "multiple — see NJ Department of Labor and Workforce Development posting requirements"
+    effective_date: null
+    parameters: {}
+    source_confidence: placeholder_needs_research
+    needs_counsel_review: true

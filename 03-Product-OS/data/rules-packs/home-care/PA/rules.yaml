@@ -1,0 +1,7 @@
+vertical: home_care
+state: PA
+status: stub
+last_reviewed_by_counsel: null
+rules: []
+# Structural stub only. Populate after NJ and NY home-care packs are both
+# validated — see home-care/NY/rules.yaml for the same sequencing note.

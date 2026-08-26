@@ -1,0 +1,11 @@
+vertical: construction
+state: PA
+status: stub
+last_reviewed_by_counsel: null
+rules: []
+# Structural stub only. Pennsylvania has its own minimum wage posture
+# (historically pegged to the federal rate — verify current status before
+# use), its own prevailing-wage law for public works, and local Philadelphia
+# ordinances that can apply on top of state law. Populate after NJ and NY
+# construction packs are both validated — see construction/NY/rules.yaml
+# for the same sequencing note.

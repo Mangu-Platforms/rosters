@@ -1,0 +1,9 @@
+role,priority,status,candidate_name,source,stage,target_start,notes
+Payroll operations lead (the spine),P0 — start now,not_started,,,,,
+"Compliance counsel (fractional, employment-tax/fintech)",P0 — start now,not_started,,,,,
+Rules engineer,P1,not_started,,,,,
+CEO/operator (if not founder-filled),P1,not_started,,,,,
+Applied ML / agent lead,P1,not_started,,,,,
+Vertical implementation hire #1,P2,not_started,,,,,
+Vertical implementation hire #2,P2,not_started,,,,,
+Bank/treasury partner owner (EWA),P2 — needed before EWA pilot,not_started,,,,,

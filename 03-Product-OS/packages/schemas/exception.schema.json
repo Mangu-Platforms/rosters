@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether.internal/schemas/exception.schema.json",
+  "title": "Exception",
+  "description": "The canonical Exception object. Source: Aether_Workforce_OS_Full_Build.pdf Section 5.1 ('Exception object (canonical)') and Aether_Ambition_Build_Plan.pdf Stage II. Every field here has a same-named column in 03-Product-OS/data/reference-data-model/schema.sql's `exception` table — the two must be changed together.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "employee_id",
+    "pay_period",
+    "earning_type",
+    "current_value",
+    "baseline_value",
+    "baseline_window",
+    "explanation_plain",
+    "recommended_action",
+    "decision",
+    "audit_hash",
+    "timestamp"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "description": "Identifier of the upstream record that triggered this exception (e.g. a time_punch id or a pay_run_line_item id). Lets a human trace the exception back to raw data."
+    },
+    "employee_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "pay_period": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "string", "format": "date" },
+        "end": { "type": "string", "format": "date" }
+      }
+    },
+    "earning_type": {
+      "type": "string",
+      "description": "The earning_code.code this exception concerns, e.g. 'OT' or 'REG'."
+    },
+    "current_value": {
+      "type": "number",
+      "description": "The value as it currently stands in the draft pay run (e.g. hours or dollars)."
+    },
+    "baseline_value": {
+      "type": "number",
+      "description": "The expected value given the employee's own history and/or the crew's history."
+    },
+    "baseline_window": {
+      "type": "string",
+      "description": "What baseline_value was computed over, e.g. '12_week_trailing_average'. Must always be stated in plain terms — this is what makes explanation_plain checkable by a human."
+    },
+    "suggested_value": {
+      "type": "number",
+      "description": "The copilot's proposed correction. Omitted when the recommended action is 'flag only, no numeric correction available'."
+    },
+    "dollar_impact_employer": {
+      "type": "number",
+      "description": "Signed dollar impact to the employer if suggested_value is approved instead of current_value."
+    },
+    "dollar_impact_employee": {
+      "type": "number",
+      "description": "Signed dollar impact to the employee's net pay if suggested_value is approved instead of current_value."
+    },
+    "explanation_plain": {
+      "type": "string",
+      "description": "Plain-language explanation with numbers and denominators. Per the Operating Plan's voice-of-product rule: never 'leverage', never a bare confidence percentage on a money movement.",
+      "minLength": 1
+    },
+    "confidence_internal": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "INTERNAL PRECISION TRACKING ONLY. Never surfaced in any UI or customer-facing API response — used only to compute the true-positive / false-positive rates referenced in Operating Plan 5.1. A response serializer that includes this field outside an internal analytics context is a bug."
+    },
+    "recommended_action": {
+      "type": "string",
+      "description": "What the operator console should ask a human to do, e.g. 'Approve a correction to 8.0 hours regular, or keep as-is and note the reason.'"
+    },
+    "approver_id": {
+      "type": ["string", "null"],
+      "format": "uuid",
+      "description": "Set once a human has acted on this exception. Null while decision is 'pending'."
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["pending", "approved", "rejected", "noted_no_change"],
+      "default": "pending"
+    },
+    "reason_code": {
+      "type": ["string", "null"],
+      "description": "Required whenever decision is 'rejected' or 'noted_no_change' — the human's stated reason, from a controlled vocabulary maintained per legal_entity."
+    },
+    "audit_hash": {
+      "type": "string",
+      "description": "Hash of (source_id + policy_version + model_version + output), per Operating Plan Section 7: 'every agent action that touches pay is audited: input snapshot, policy version, output, approver.'"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this exception was generated, not when it was decided (see decided_at in the data model for that)."
+    }
+  },
+  "examples": [
+    {
+      "source_id": "time_punch_8f21",
+      "employee_id": "3f9a2b10-6e2a-4b8a-9a1e-6c2f6b0d1a11",
+      "pay_period": { "start": "2026-08-10", "end": "2026-08-23" },
+      "earning_type": "OT",
+      "current_value": 14.5,
+      "baseline_value": 10.2,
+      "baseline_window": "12_week_trailing_average",
+      "suggested_value": 8.0,
+      "dollar_impact_employer": -146.25,
+      "dollar_impact_employee": -146.25,
+      "explanation_plain": "Maria's overtime is 42% above her 12-week baseline. The Saturday shift looks like a clock-out miss against the posted schedule.",
+      "confidence_internal": 0.81,
+      "recommended_action": "Approve a correction to 8.0 hours regular, or keep as-is and note the reason.",
+      "approver_id": null,
+      "decision": "pending",
+      "reason_code": null,
+      "audit_hash": "sha256:6a1e...c02f",
+      "timestamp": "2026-08-24T09:12:00Z"
+    }
+  ]
+}

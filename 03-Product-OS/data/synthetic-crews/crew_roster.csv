@@ -1,0 +1,17 @@
+employee_ref,first_name,last_name,role_title,hire_date,pay_basis,base_hourly_rate,workplace,jurisdiction,legal_entity
+EMP-001,Maria,Delgado,Carpenter,2023-04-03,hourly,29.50,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-002,Deshawn,Carter,Laborer,2024-06-17,hourly,23.00,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-003,Kevin,O'Malley,Apprentice Laborer,2025-09-02,hourly,17.25,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-004,Priya,Nair,Electrician,2022-01-10,hourly,36.00,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-005,Tyler,Brooks,Apprentice Laborer,2026-05-12,hourly,14.75,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-006,Sam,Reyes,Equipment Operator,2021-11-04,hourly,27.50,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-007,Angela,Fitzgerald,Foreman,2019-03-22,hourly,41.00,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-008,Marcus,Webb,Carpenter,2023-08-14,hourly,30.25,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-009,Lena,Kowalski,HVAC Technician,2022-07-01,hourly,31.50,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-010,Diego,Alvarez,Plumber,2020-02-18,hourly,33.00,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-011,Jordan,Pierce,Laborer,2024-10-07,hourly,22.50,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-012,Fatima,Haidari,Electrician,2021-05-29,hourly,34.75,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-013,Chris,Nolan,Equipment Operator,2023-01-09,hourly,26.75,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-014,Rashad,Wells,Carpenter,2024-03-03,hourly,28.75,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-015,Olivia,Santos,Foreman,2018-06-25,hourly,39.50,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
+EMP-016,Ben,Turner,Laborer,2025-01-20,hourly,22.00,Palisade Builders — Fort Lee Jobsite,US-NJ,Palisade Builders LLC
