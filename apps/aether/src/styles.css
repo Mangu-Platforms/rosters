@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,480;9..144,560;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #10110e;
+  --color-surface: #191a16;
+  --color-elevated: #22231e;
+  --color-fg: #f2f0e8;
+  --color-muted: #9b9a90;
+  --color-subtle: #6e6d64;
+  --color-border: #2c2d27;
+  --color-primary: #d7d3c4;
+  --color-primary-fg: #10110e;
+  --color-ok: #7d9a78;
+  --color-warn: #c4a574;
+  --color-danger: #c17a6e;
+  --color-ring: #d7d3c4;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { background: var(--color-bg); color: var(--color-fg); font-family: var(--font-sans); }
+  h1, h2, h3 { font-family: var(--font-serif); text-wrap: balance; }
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  * { border-color: var(--color-border); }
+}
+.tabular { font-variant-numeric: tabular-nums; }
+.hairline { box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-fg) 10%, transparent); }
