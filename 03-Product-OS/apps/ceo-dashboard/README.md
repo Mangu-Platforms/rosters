@@ -1,3 +1,5 @@
-# CEO / Owner Dashboard
+# CEO Dashboard
 
-Not built yet. Health Score, next three payrolls, credits found year-to-date, sites on fire. Operating Plan Section 6 is explicit: "No timesheet grid. If they want one, they are not the buyer." Keep that discipline when this gets built.
+Health Score, next three payrolls, credits found, sites on fire. No timesheet grid.
+
+The Stage II visual model that implements this surface lives in `../stage-ii-model/` (`/ceo/*`).
